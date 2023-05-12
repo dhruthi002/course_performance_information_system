@@ -40,6 +40,10 @@ CREATE TABLE TaughtBy (
     CONSTRAINT fk_taughtby
         FOREIGN KEY (SubjectID)
         REFERENCES Subject(SubjectID)
+        ON DELETE CASCADE,
+    CONSTRAINT fkt_taughtby
+        FOREIGN KEY (InstructorID)
+        REFERENCES Instructor(StudentID)
         ON DELETE CASCADE
 ); 
 
@@ -49,6 +53,10 @@ CREATE TABLE TeacherGuardian (
     CONSTRAINT fk_teachergrd
         FOREIGN KEY (StudentID)
         REFERENCES Student(StudentID)
+        ON DELETE CASCADE,
+    CONSTRAINT fkt_teachergrd
+        FOREIGN KEY (InstructorID)
+        REFERENCES Instructor(InstructorID)
         ON DELETE CASCADE
 );
 
@@ -71,6 +79,9 @@ CREATE TABLE Marks (
         FOREIGN KEY (StudentID)
         REFERENCES Student(StudentID)
         ON DELETE CASCADE
+    CONSTRAINT fks_marks
+        FOREIGN KEY (SubjectID)
+        REFERENCES Subject(SubjectID)
+        ON DELETE CASCADE
 );
-
 
